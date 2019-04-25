@@ -8,6 +8,53 @@
     <title>Document</title>
 </head>
 <body>
+    <nav class="header">
+        <div class="logoCompanyBox">
+            <img class="piggyBank" src="./assets/piggy_bank.svg" alt="">
+            <span class="budgetBuilder">Budget Builder</span>
+        </div>
+        <div class="budget">
+            <span>Budget Total:</span>
+            <div class="money"></div>
+        </div>
+    </nav>
+    <div class="contentBox">
+            <div class="monthlyExpensesBox">
+                <span class="monthlyExpensesTitle">
+                    Monthly Expenses
+                </span>
+                <ul class="expenseList">
+                    <li class="expenseItem">
+                        <span class="expenseItemText">Groceries</span>
+                        <div class="moneyTrash">
+                            <span class="expenseItemText" class="expenseMoney">$134</span>
+                            <img src="./assets/trash_can.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="expenseItem">
+                            <span class="expenseItemText">Groceries</span>
+                            <div class="moneyTrash">
+                                <span class="expenseItemText" class="expenseMoney">$134</span>
+                                <img src="./assets/trash_can.svg" alt="">
+                            </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="billBox">
+                    <span class="billTitleText">Add Bill</span>
+                    <div class="input nameInputDiv">
+                        <span class="inputText">Name</span>
+                        <input class="nameInput" type="text">
+                    </div>
+                    <div class="input amountInputDiv">
+                        <span class="inputText">Amount</span>
+                        <input class="amountInput" type="text">
+                    </div>
+                    <button onclick='addListItem()' class="addButton">Add</button>
+            </div>
+    </div>
+
+
     <script src="./index.js"></script>
 </body>
 </html>

@@ -43,6 +43,8 @@ function addListItem(event) {
     listItem.appendChild(createSpanName)
     listItem.appendChild(moneyDiv)
     list.appendChild(listItem)
+    expenseName.value = ''
+    expenseAmount.value = ''
 }
 
 function checkBudget() {
@@ -50,9 +52,7 @@ function checkBudget() {
     let amounts = document.getElementsByClassName('expenseMoney')
     for (let i = 0; i < amounts.length; i++) {
         num += +amounts[i].innerText
-        console.log(amounts[i].innerText)
     }
-    console.log(num)
     money.innerText = `$${num}`
 }
 
@@ -62,6 +62,7 @@ function removeItem(e) {
     let eventArr = e.composedPath()
     eventArr[2].remove()
     checkBudget()
+    
 }
 
 function onload() {

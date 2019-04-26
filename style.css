@@ -91,6 +91,7 @@ body {
 
 .expenseItemText {
     font-size: 1.3em;
+    text-transform: capitalize;
 }
 
 .expenseItem img {

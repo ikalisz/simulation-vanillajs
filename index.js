@@ -1,8 +1,18 @@
 
 //Use code below to add up all expenses and set the inner text to the total
-let money = document.querySelector('.money')
-let num = 248
+const money = document.querySelector('.money')
+let num = 0
 money.innerText = `$${num}`
+
+let trashClick = document.getElementsByClassName('trash')
+
+function addTrash() {
+    const length = trashClick.length
+    for (let i = 0; i < length; i++){
+        trashClick[i].addEventListener('click', removeItem)
+    }
+}
+console.log(trashClick)
 
 function addListItem(event) {
     let list = document.querySelector('.expenseList')
@@ -15,24 +25,54 @@ function addListItem(event) {
     let moneyDiv = document.createElement('div')
     moneyDiv.classList.add('moneyTrash')
     trashIcon.src = './assets/trash_can.svg'
+    trashIcon.classList.add('trash')
     listItem.classList.add('expenseItem')
-    let createSpanAmount = document.createElement('span')
+    listItem.id = `${expenseName.value}`
+    let createSpanAmountMoney = document.createElement('span')
     let expenseAmount = document.querySelector('.amountInput')
-    createSpanAmount.innerText = `$${expenseAmount.value}`
-    createSpanAmount.classList.add('expenseItemText')
-    createSpanAmount.classList.add('expenseMoney')
-    moneyDiv.appendChild(createSpanAmount)
+    let createSpanMoneySign = document.createElement('span')
+    let createNumberAmount = document.createElement('span')
+    createNumberAmount.innerText = expenseAmount.value
+    createSpanMoneySign.innerText = '$'
+    createSpanAmountMoney.append(createSpanMoneySign)
+    createSpanAmountMoney.append(createNumberAmount)
+    createSpanAmountMoney.classList.add('expenseItemText')
+    createNumberAmount.classList.add('expenseMoney')
+    moneyDiv.appendChild(createSpanAmountMoney)
     moneyDiv.appendChild(trashIcon)
     listItem.appendChild(createSpanName)
     listItem.appendChild(moneyDiv)
     list.appendChild(listItem)
 }
 
+function checkBudget() {
+    let num = 0
+    let amounts = document.getElementsByClassName('expenseMoney')
+    for (let i = 0; i < amounts.length; i++) {
+        num += +amounts[i].innerText
+        console.log(amounts[i].innerText)
+    }
+    console.log(num)
+    money.innerText = `$${num}`
+}
 
+window.addEventListener('onload', checkBudget)
 
+function removeItem(e) {
+    let eventArr = e.composedPath()
+    eventArr[2].remove()
+    checkBudget()
+}
 
+function onload() {
+    addTrash()
+    checkBudget()
+}
 
+window.onload = onload()
 
 function callAdd() {
     addListItem()
+    addTrash()
+    checkBudget()
 }
